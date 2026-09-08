@@ -14,6 +14,10 @@ ctx.*
 build/
 .ninja_*
 build.ninja
+build-native.ninja
+
+# Native Linux host
+native/target/
 
 # IDE folders
 .idea/
