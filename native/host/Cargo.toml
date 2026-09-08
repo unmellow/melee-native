@@ -1,0 +1,33 @@
+[package]
+name = "melee-host"
+version = "0.1.0"
+edition = "2021"
+description = "Native Linux host for the Melee decomp: wgpu Vulkan GX + PAD"
+license = "MIT"
+
+[[bin]]
+name = "melee-native"
+path = "src/main.rs"
+
+[lib]
+name = "melee_host"
+crate-type = ["rlib", "staticlib", "cdylib"]
+
+[features]
+default = ["window"]
+window = ["dep:winit"]
+
+[dependencies]
+bytemuck = { version = "1.21", features = ["derive"] }
+env_logger = "0.11"
+glam = "0.29"
+libc = "0.2"
+log = "0.4"
+parking_lot = "0.12"
+pollster = "0.4"
+raw-window-handle = "0.6"
+wgpu = { version = "24.0.3" }
+winit = { version = "0.30", optional = true, default-features = false, features = ["rwh_06", "x11", "wayland"] }
+
+[dev-dependencies]
+approx = "0.5"
